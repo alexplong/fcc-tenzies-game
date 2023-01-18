@@ -4,16 +4,16 @@ import React from "react";
 
 function Main() {
   const [tenDice, setTenDice] = React.useState([
-    { id: 1, roll: 1, selected: false },
-    { id: 2, roll: 1, selected: false },
-    { id: 3, roll: 1, selected: true },
-    { id: 4, roll: 1, selected: false },
-    { id: 5, roll: 1, selected: false },
-    { id: 6, roll: 1, selected: true },
-    { id: 7, roll: 1, selected: false },
-    { id: 8, roll: 1, selected: false },
-    { id: 9, roll: 1, selected: false },
-    { id: 10, roll: 1, selected: false },
+    { id: "1", roll: Math.floor(Math.random() * 6) + 1, selected: false },
+    { id: "2", roll: Math.floor(Math.random() * 6) + 1, selected: false },
+    { id: "3", roll: Math.floor(Math.random() * 6) + 1, selected: true },
+    { id: "4", roll: Math.floor(Math.random() * 6) + 1, selected: false },
+    { id: "5", roll: Math.floor(Math.random() * 6) + 1, selected: false },
+    { id: "6", roll: Math.floor(Math.random() * 6) + 1, selected: true },
+    { id: "7", roll: Math.floor(Math.random() * 6) + 1, selected: false },
+    { id: "8", roll: Math.floor(Math.random() * 6) + 1, selected: false },
+    { id: "9", roll: Math.floor(Math.random() * 6) + 1, selected: false },
+    { id: "10", roll: Math.floor(Math.random() * 6) + 1, selected: false },
   ]);
 
   const diceElements = tenDice.map((die) => {
@@ -31,8 +31,6 @@ function Main() {
 
   function handleClick(event) {
     const { id } = event.target;
-    // console.log(id);
-    console.log(tenDice[0]);
     setTenDice((prevDices) => {
       return prevDices.map((die) => {
         return die.id === id ? { ...die, selected: !die.selected } : die;
