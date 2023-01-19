@@ -95,3 +95,23 @@ body {
 .selected {
   background-color: #59E391;
 }
+
+.roll_button {
+  background: #5035FF;
+  box-shadow: 0px 3.2px 7.68px rgba(0, 0, 0, 0.18);
+  border-radius: 3.81277px;
+  border: 0;
+  width: 92.16px;
+  height: 35.84px;
+  color: #FFFFFF;
+  font-family: "Karla";
+  font-weight: 700;
+  font-size: 16.384px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-inline: auto;
+  margin-top: 25.6px;
+}
