@@ -6,7 +6,7 @@ import { diceSet } from "../diceSet";
 import Die from "./Die";
 
 function Main() {
-  let win = false;
+  const [win, setWin] = React.useState(false);
   const [tenDice, setTenDice] = React.useState(() => diceSet);
 
   const diceElements = tenDice.map((die) => {
@@ -15,9 +15,17 @@ function Main() {
     );
   });
 
+  React.useEffect(() => {
+    let winCheck = tenDice.every((dice) => {
+      return dice.roll === tenDice[0].roll && dice.selected === true;
+    });
+    if (winCheck) {
+      setWin(true);
+    }
+  }, [tenDice]);
+
   function handleClick(event) {
     const { id } = event.target;
-    console.log(event.target);
     setTenDice((prevDices) => {
       return prevDices.map((die) => {
         return die.id === id ? { ...die, selected: !die.selected } : die;
