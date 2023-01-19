@@ -84,7 +84,7 @@ body {
   cursor: pointer;
 }
 
-.dice.p {
+.dice--number {
     font-family: 'Karla';
     font-style: normal;
     font-weight: 700;

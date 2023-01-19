@@ -1,38 +1,23 @@
 /** @format */
 
 import React from "react";
+import { diceSet } from "../diceSet";
+// import { nanoid } from "nanoid";
+import Die from "./Die";
 
 function Main() {
   let win = false;
-  const [tenDice, setTenDice] = React.useState([
-    { id: "1", roll: Math.floor(Math.random() * 6) + 1, selected: false },
-    { id: "2", roll: Math.floor(Math.random() * 6) + 1, selected: false },
-    { id: "3", roll: Math.floor(Math.random() * 6) + 1, selected: false },
-    { id: "4", roll: Math.floor(Math.random() * 6) + 1, selected: false },
-    { id: "5", roll: Math.floor(Math.random() * 6) + 1, selected: false },
-    { id: "6", roll: Math.floor(Math.random() * 6) + 1, selected: false },
-    { id: "7", roll: Math.floor(Math.random() * 6) + 1, selected: false },
-    { id: "8", roll: Math.floor(Math.random() * 6) + 1, selected: false },
-    { id: "9", roll: Math.floor(Math.random() * 6) + 1, selected: false },
-    { id: "10", roll: Math.floor(Math.random() * 6) + 1, selected: false },
-  ]);
+  const [tenDice, setTenDice] = React.useState(() => diceSet);
 
   const diceElements = tenDice.map((die) => {
     return (
-      <div
-        key={die.id}
-        id={die.id}
-        value={die.roll}
-        className={die.selected ? "dice selected" : "dice"}
-        onClick={(event) => handleClick(event)}
-      >
-        {die.roll}
-      </div>
+      <Die die={die} key={die.id} value={die.roll} handleClick={handleClick} />
     );
   });
 
   function handleClick(event) {
     const { id } = event.target;
+    console.log(event.target);
     setTenDice((prevDices) => {
       return prevDices.map((die) => {
         return die.id === id ? { ...die, selected: !die.selected } : die;
@@ -51,18 +36,7 @@ function Main() {
   }
 
   function resetGame() {
-    setTenDice([
-      { id: "1", roll: Math.floor(Math.random() * 6) + 1, selected: false },
-      { id: "2", roll: Math.floor(Math.random() * 6) + 1, selected: false },
-      { id: "3", roll: Math.floor(Math.random() * 6) + 1, selected: false },
-      { id: "4", roll: Math.floor(Math.random() * 6) + 1, selected: false },
-      { id: "5", roll: Math.floor(Math.random() * 6) + 1, selected: false },
-      { id: "6", roll: Math.floor(Math.random() * 6) + 1, selected: false },
-      { id: "7", roll: Math.floor(Math.random() * 6) + 1, selected: false },
-      { id: "8", roll: Math.floor(Math.random() * 6) + 1, selected: false },
-      { id: "9", roll: Math.floor(Math.random() * 6) + 1, selected: false },
-      { id: "10", roll: Math.floor(Math.random() * 6) + 1, selected: false },
-    ]);
+    setTenDice(diceSet);
   }
 
   return (
