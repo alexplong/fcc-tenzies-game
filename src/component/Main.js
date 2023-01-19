@@ -69,7 +69,7 @@ function Main() {
               Roll
             </button>
           ) : (
-            <button className="roll_button" onClick={resetGame}>
+            <button className="reset_button" onClick={resetGame}>
               Reset Game
             </button>
           )}
